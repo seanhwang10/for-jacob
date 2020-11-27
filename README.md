@@ -25,10 +25,11 @@ if (lapse % 0.5)
 end 
 ```
 
-
+작동 순서: 
+1. input으로 시간을 주면 (0.1초 단위) 공의 x,y 좌표를 뱉는 함수 필요 
+2. loop 사용해서 90분동안 (필요한만큼) 위 함수에 시간 파라미터 feed 해주고 공 좌표들 받기. 
 
 ## Algorithm cases 
-basic: 
 
 case 1. 공이 선수에게 있을때 
 - receive 이후 pass 전 
@@ -37,4 +38,9 @@ ball_location = location(player_with_ball);
 ``` 
 
 case 2. 공을 패스했을때 
+``` 
+ball_location = location( (패스한애 - 받는애) / lapse_slice ) 
+```
+
+## 간 - 단 
 
