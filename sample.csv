@@ -1,0 +1,16 @@
+﻿lapse (sec),team,player_id,event
+0.0,,,START
+0.0,barca,1,pass
+0.3,barca,2,receive
+1.2,barca,2,pass
+1.6,barca,3,receive
+2.1,barca,3,pass
+2.5,barca,1,receive
+2.8,barca,1,pass
+3.0,barca,2,receive
+3.1,barca,2,pass
+3.3,barca,1,receive
+3.6,barca,1,pass
+4.0,barca,3,receive
+4.3,barca,3,pass
+4.7,barca,2,receive
