@@ -1,12 +1,14 @@
 # for jacob
  
 제이콥 프로젝트 sample 
+### 난 MATLAB으로 했는데 파이썬으로 구현하는게 사실 더 쉬움. 나는 파이썬 syntax 까먹어서 요즘 익숙한 멧랩으로 함. 작동방식은 파이썬도 동일. 수도코드는 최대한 파이썬으로 해보겠음. 
 *** 
 ## BASICS:
 - 0.5초 단위로 location data 있음
 - 0.1초 단위로 event data 있음 
 
 - location data 를 0.1초로 sync 해야함 
+psuedocoding: 
 ``` 
 #Optimized algorithm (각 event 때의 위치를 계산) 
 player_location(lapse)  begin 
@@ -31,7 +33,7 @@ end
 3. 1번만 있어도 니가 원하는 시간에 공이 어디있는지 알수있음. 2번 있으면 animate 가능. 
 - 나는 에니메잇을 하기로 함. 
 
-## Algorithm cases 
+## event cases 
 
 case 1. 공이 선수에게 있을때 
 - receive 이후 pass 전 
