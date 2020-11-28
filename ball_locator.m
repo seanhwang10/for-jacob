@@ -41,6 +41,7 @@ for t = 1 : (data_count*5)
             receive = 0; 
             who_passed = event(evt, 3); %who passed the ball
             pass_to = event(evt+1, 3); %passed to? 
+            receive_time = event(evt+1, 1); 
         else %receive event 
             pass = 0; 
             receive = 1;
@@ -70,19 +71,48 @@ for t = 1 : (data_count*5)
             start_pos(1,2) = pos_extp(t, 6);
         end 
         
-        if (passed_to == 1) 
-            end_
-    
+        if (pass_to == 1) 
+            endos(1,1) = pos_extp(receive_time, 1)
+            end_pos(1,2) = pos_extp(receive_time, 2)
+        end 
 
-        duration = event(evt,2) - event(evt,1)
+        if (pass_to == 2) 
+            end_pos(1,1) = pos_extp(receive_time, 3)
+            end_pos(1,2) = pos_extp(receive_time, 4)
+        end 
+        
+        if (pass_to == 3) 
+            end_pos(1,1) = pos_extp(receive_time, 5)
+            end_pos(1,2) = pos_extp(receive_time, 6)
+        end 
+        
+        ball_loc_slice(1,1) = end_pos(1,1) - start_pos (1,1) 
+        ball_loc_slice(1,2) = end_pos(1,2) - start_pos (1,2) 
+        
+        duration = event(evt+1,1) - event(evt); 
+        
+        ball_location(t,1) = pos_extp(t,1) + (ball_loc_slice(1,1) / duration);
+        ball_location(t,2) = pos_extp(t,2)+ (ball_loc_slice(1,2) / duration); 
+    end
+    
+    if (receive == 1)
+            if (ball_at == 1) 
+                ball_location(t,1) = pos_extp(t,1);
+                ball_location(t,2) = pos_extp(t,2); 
+            end 
+
+            if (ball_at == 2) 
+                ball_location(t,1) = pos_extp(t,3);
+                ball_location(t,2) = pos_extp(t,4); 
+            end 
+
+            if (ball_at == 3)
+                ball_location(t,1) = pos_extp(t,5);
+                ball_location(t,2) = pos_extp(t,6); 
+            end
     end 
-        
-        
-    
-end 
-        
-    
 
+end 
 
 %Displaying player & ball position by time 
 for i = 1:data_count*5  

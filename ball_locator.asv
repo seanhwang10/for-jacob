@@ -41,6 +41,7 @@ for t = 1 : (data_count*5)
             receive = 0; 
             who_passed = event(evt, 3); %who passed the ball
             pass_to = event(evt+1, 3); %passed to? 
+            receive_time = event(evt+1, 1); 
         else %receive event 
             pass = 0; 
             receive = 1;
@@ -71,10 +72,21 @@ for t = 1 : (data_count*5)
         end 
         
         if (passed_to == 1) 
-            
-    
+            end_pos(1,1) = pos_extp(receive_time, 1)
+            end_pos(1,2) = pos_extp(receive_time, 2)
+        end 
 
-        duration = event(evt,2) - event(evt,1)
+        if (passed_to == 2) 
+            end_pos(1,1) = pos_extp(receive_time, 3)
+            end_pos(1,2) = pos_extp(receive_time, 4)
+        end 
+        
+        if (passed_to == 3) 
+            end_pos(1,1) = pos_extp(receive_time, 5)
+            end_pos(1,2) = pos_extp(receive_time, 6)
+        end 
+        
+        ba
     end 
         
         
