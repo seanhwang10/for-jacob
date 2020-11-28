@@ -2,7 +2,7 @@ clc; clear all;
 
 pos_raw = csvread('positions.csv', 1) %선수 포지션 데이터 불러오기 
 event = csvread('sample_M.csv', 1) %Events 불러오기 
-ball_location = csvread('test.csv', 1) 
+%ball_location = csvread('test.csv', 1) 
 
 data_count = 11; %데이터셋 몇개인지 
 
