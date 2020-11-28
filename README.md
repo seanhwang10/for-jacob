@@ -1,11 +1,15 @@
 # for jacob
 # outcome!! 
+
 데이터 너가 보내준 사진 토대로 만들어봄 간단하게 
-! [] (data1.png)  
-! [] (data2.png)
+
+![](https://github.com/seanhwang10/for-jacob/blob/main/data1.PNG)  
+
+![](https://github.com/seanhwang10/for-jacob/blob/main/data2.PNG)
 
 코드 돌리면 나오는거: 
-![](https://github.com/seanhwang10/for-jacob/blob/main/demo.gif "Logo Title Text 1")
+
+![](https://github.com/seanhwang10/for-jacob/blob/main/demo.gif)
   
 제이콥 프로젝트 sample 
 ### 난 MATLAB으로 했는데 파이썬으로 구현하는게 사실 더 쉬움. 나는 파이썬 syntax 까먹어서 요즘 익숙한 멧랩으로 함. 작동방식은 파이썬도 동일. 수도코드는 최대한 파이썬으로 해보겠음. 
