@@ -1,7 +1,7 @@
 clc; clear all; 
 
 pos_raw = csvread('positions.csv', 1) %선수 포지션 데이터 불러오기 
-event = csvread('sample.csv', 1) %Events 불러오기 
+event = csvread('sample_M.csv', 1) %Events 불러오기 
 
 data_count = 11; %데이터셋 몇개인지 
 
@@ -26,20 +26,60 @@ end
 %Event Code 사용했음 PASS = 1, RECEIVE = 2
 event(:,1) = event(:,1) * 10; 
 evt = 3; %event log index (first) 
+pass = 0; 
 
-% for t = 1 : (data_count*5) 
-%     if (t < 3) %초기설정 
-%         ball_location(t,1) = pos_extp(t,1);
-%         ball_location(t,2) = pos_extp(t,2); 
-%     end 
-%     if (t == evt) %event 발생 시 
-%         if event(
-%         
-%         evt = evt + 1; %increment the event index 
-%     end 
-%     
-%     
-% end 
+for t = 1 : (data_count*5) 
+    if (t < 3) %초기설정 
+        ball_location(t,1) = pos_extp(t,1);
+        ball_location(t,2) = pos_extp(t,2); 
+    end 
+    
+    if (t == evt) %event 발생 시 
+        
+        if (event(evt, 5) == 1) %pass event 
+            pass = 1;
+            receive = 0; 
+            who_passed = event(evt, 3); %who passed the ball
+            pass_to = event(evt+1, 3); %passed to? 
+        else %receive event 
+            pass = 0; 
+            receive = 1;
+            ball_at = event(evt, 3) %who has the ball 
+        end 
+        
+        if evt == 16
+            evt = 16; 
+        else 
+            evt = evt + 1; %increment the event index 
+        end 
+    end 
+    
+    if(pass == 1) 
+        if (who_passed == 1) 
+            start_pos(1,1) = pos_extp(t, 1); 
+            start_pos(1,2) = pos_extp(t, 2);
+        end 
+        
+        if (who_passed == 2) 
+            start_pos(1,1) = pos_extp(t, 3); 
+            start_pos(1,2) = pos_extp(t, 4);
+        end 
+        
+        if (who_passed == 3)
+            start_pos(1,1) = pos_extp(t, 5); 
+            start_pos(1,2) = pos_extp(t, 6);
+        end 
+        
+        if (passed_to == 1) 
+            end_
+    
+
+        duration = event(evt,2) - event(evt,1)
+    end 
+        
+        
+    
+end 
         
     
 
@@ -51,9 +91,11 @@ for i = 1:data_count*5
     plot(pos_extp(i,3), pos_extp(i,4),'or', 'MarkerSize',5,'MarkerFaceColor','r') 
     hold on 
     plot(pos_extp(i,5), pos_extp(i,6),'or', 'MarkerSize',5,'MarkerFaceColor','r') 
+
+%      plot(ball_location(i,1), ball_location(i,2),'or', 'MarkerSize',10,'MarkerFaceColor','w') 
     hold off 
-    legend('Player 1','Player 2', 'Player 3')
+    legend('Player 1','Player 2', 'Player 3', 'Ball')
     axis([0 200 0 200]);
-    %pause(0.3)
+    pause(1)
 end 
 
