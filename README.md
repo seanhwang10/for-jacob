@@ -27,6 +27,26 @@ if (lapse % 0.5)
 end 
 ```
 
+actual: 
+``` 
+%Position Extrapolation loop 
+%선수 포지션이 0.5 단위니까 0.1단위로 extrapolate 해야함 
+for c = 1:6 
+    
+    for s = 0 : data_count-1
+        ori = s * 5; 
+        location_slice = (pos_raw((s+2),(c+1)) - pos_raw((s+1),(c+1))) / 5
+        for h = 1:5
+            if (h == 1) 
+                pos_extp((ori+h),c) = pos_raw((s+1),(c+1));
+            else 
+                pos_extp((ori+h), c) = pos_raw((s+1),(c+1)) + (location_slice * (h-1));
+            end 
+        end 
+    end 
+end 
+``` 
+
 작동 순서: 
 1. input으로 시간을 주면 (0.1초 단위) 공의 x,y 좌표를 뱉는 함수 필요 
 2. loop 사용해서 90분동안 (필요한만큼) 위 함수에 시간 파라미터 feed 해주고 공 좌표들 받기.
@@ -47,4 +67,6 @@ ball_location = location( (패스한애 - 받는애) / lapse_slice )
 ```
 
 ## 간 - 단 
+
+
 
