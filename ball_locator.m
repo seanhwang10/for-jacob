@@ -21,25 +21,25 @@ for c = 1:6
         end 
     end 
 end 
-
+ 
 %Ball positioning 
 %Event Code 사용했음 PASS = 1, RECEIVE = 2
 event(:,1) = event(:,1) * 10; 
 evt = 3; %event log index (first) 
 
-for t = 1 : (data_count*5) 
-    if (t < 3) %초기설정 
-        ball_location(t,1) = pos_extp(t,1);
-        ball_location(t,2) = pos_extp(t,2); 
-    end 
-    if t = evt %event 발생 시 
-        if event(
-        
-        evt = evt + 1; %increment the event index 
-    end 
-    
-    
-end 
+% for t = 1 : (data_count*5) 
+%     if (t < 3) %초기설정 
+%         ball_location(t,1) = pos_extp(t,1);
+%         ball_location(t,2) = pos_extp(t,2); 
+%     end 
+%     if (t == evt) %event 발생 시 
+%         if event(
+%         
+%         evt = evt + 1; %increment the event index 
+%     end 
+%     
+%     
+% end 
         
     
 
