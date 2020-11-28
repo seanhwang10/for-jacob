@@ -5,7 +5,7 @@
 ! [] (data2.png)
 
 코드 돌리면 나오는거: 
-![alt text](https://github.com/seanhwang10/for-jacob/raw/master/demo.gif "Logo Title Text 1")
+![](https://github.com/seanhwang10/for-jacob/blob/main/demo.gif "Logo Title Text 1")
   
 제이콥 프로젝트 sample 
 ### 난 MATLAB으로 했는데 파이썬으로 구현하는게 사실 더 쉬움. 나는 파이썬 syntax 까먹어서 요즘 익숙한 멧랩으로 함. 작동방식은 파이썬도 동일. 수도코드는 최대한 파이썬으로 해보겠음. 
