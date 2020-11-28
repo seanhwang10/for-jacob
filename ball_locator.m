@@ -21,7 +21,8 @@ for c = 1:6
 end 
 
 %Ball positioning 
-
+for p = 0:(data_count*5) 
+    
 
 
 %Displaying player & ball position by time 
