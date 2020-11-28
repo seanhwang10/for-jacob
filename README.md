@@ -65,6 +65,31 @@ end
 - 나는 에니메잇을 하기로 함. 
 
 ## event cases 
+- 일단 모든 가능한 state cases 를 지정하고 pass 상태인지 receive 상태인지 공 소유 상황인지 (이건 자동으로 되지만) 
+
+```
+    if (t == evt) %event 발생 시 
+        
+        if (event(evt, 5) == 1) %pass event 
+            pass = 1;
+            receive = 0; 
+            who_passed = event(evt, 3); %who passed the ball
+            pass_to = event(evt+1, 3); %passed to? 
+            receive_time = event(evt+1, 1); 
+        else %receive event 
+            pass = 0; 
+            receive = 1;
+            ball_at = event(evt, 3) %who has the ball 
+        end 
+        
+        if evt == 16
+            evt = 16; 
+        else 
+            evt = evt + 1; %increment the event index 
+        end 
+    end
+```
+
 
 case 1. 공이 선수에게 있을때 
 - receive 이후 pass 전 
@@ -72,12 +97,80 @@ case 1. 공이 선수에게 있을때
 ball_location = location(player_with_ball); 
 ``` 
 
-case 2. 공을 패스했을때 
+```
+    if(pass == 1) 
+        if (who_passed == 1) 
+            start_pos(1,1) = pos_extp(t, 1); 
+            start_pos(1,2) = pos_extp(t, 2);
+        end 
+        
+        if (who_passed == 2) 
+            start_pos(1,1) = pos_extp(t, 3); 
+            start_pos(1,2) = pos_extp(t, 4);
+        end 
+        
+        if (who_passed == 3)
+            start_pos(1,1) = pos_extp(t, 5); 
+            start_pos(1,2) = pos_extp(t, 6);
+        end 
+        
+        if (pass_to == 1) 
+            endos(1,1) = pos_extp(receive_time, 1)
+            end_pos(1,2) = pos_extp(receive_time, 2)
+        end 
+
+        if (pass_to == 2) 
+            end_pos(1,1) = pos_extp(receive_time, 3)
+            end_pos(1,2) = pos_extp(receive_time, 4)
+        end 
+        
+        if (pass_to == 3) 
+            end_pos(1,1) = pos_extp(receive_time, 5)
+            end_pos(1,2) = pos_extp(receive_time, 6)
+        end 
+        
+        ball_loc_slice(1,1) = end_pos(1,1) - start_pos (1,1) 
+        ball_loc_slice(1,2) = end_pos(1,2) - start_pos (1,2) 
+        
+        duration = event(evt+1,1) - event(evt); 
+        
+        ball_location(t,1) = pos_extp(t,1) + (ball_loc_slice(1,1) / duration);
+        ball_location(t,2) = pos_extp(t,2)+ (ball_loc_slice(1,2) / duration); 
+    end
+```
+
+case 2. 공을 패스했을때 (다른애가 받을떄) 
 ``` 
 ball_location = location( (패스한애 - 받는애) / lapse_slice ) 
 ```
 
-## 간 - 단 
+```
+    if (receive == 1)
+            if (ball_at == 1) 
+                ball_location(t,1) = pos_extp(t,1);
+                ball_location(t,2) = pos_extp(t,2); 
+            end 
+
+            if (ball_at == 2) 
+                ball_location(t,1) = pos_extp(t,3);
+                ball_location(t,2) = pos_extp(t,4); 
+            end 
+
+            if (ball_at == 3)
+                ball_location(t,1) = pos_extp(t,5);
+                ball_location(t,2) = pos_extp(t,6); 
+            end
+    end 
+
+end 
+
+``` 
+
+드리고 맨 위 보여준거처럼 디스플레이를 하던지 아니면 이렇게 데이터를 뽑던지 하기 가능 
+
+![](https://github.com/seanhwang10/for-jacob/blob/main/balldata.PNG)
+
+
 
 
 
