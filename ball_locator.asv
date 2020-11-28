@@ -9,10 +9,9 @@ for s = 0 : data_count-1
     for h = 1:4
         if (h == 1) 
             pos_extp((ori+h),1) = pos_raw((s+1),2);
-        else 
-            location_slice = (pos_raw((s+2),2) - pos_raw((s+1),2)) / 5
-            pos_extp((ori+h), 1) = pos_raw((s+1),2) + (location_slice * h);
         end 
+     location_slice = (pos_raw((s+2),2) - pos_raw((s+1),2)) / 5
+     pos_extp((ori+h), 1) = pos_raw((s+1),2) + (
     end 
 end 
 
